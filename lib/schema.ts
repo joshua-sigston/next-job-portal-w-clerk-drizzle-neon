@@ -5,6 +5,7 @@ import {
   pgEnum,
   text,
   timestamp,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 export const jobTypeEnum = pgEnum("job_type", [
@@ -32,6 +33,8 @@ export const jobsTable = pgTable("jobs", {
   description: text("description").notNull(),
   applicationUrl: varchar("application_url", { length: 255 }).notNull(),
   createdAt: timestamp("created_at").defaultNow(),
+  imageUrl: varchar("image_url", { length: 255 }),
+  approved: boolean("approved").default(false),
 });
 
 export type NewJob = typeof jobsTable.$inferInsert;
