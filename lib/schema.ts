@@ -14,6 +14,7 @@ export const jobTypeEnum = pgEnum("job_type", [
   "Contract",
   "Internship",
 ]);
+
 export const experienceLevelEnum = pgEnum("experience_level", [
   "Entry Level",
   "Mid-level",
