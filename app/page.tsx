@@ -1,17 +1,19 @@
-import JobCard from "@/components/ui/jobs/job-card";
-import { getJobs } from "./actions/jobActions";
-import Container from "@/components/ui/container";
+import JobList from "@/components/ui/jobs/job-list";
 
-export default async function Home() {
-  const jobs = (await getJobs()).splice(0, 10);
+interface PageProps {
+  searchParams: Promise<{
+    search?: string | "";
+    jobType?: string;
+    location?: string;
+  }>;
+}
+
+export default async function Home({ searchParams }: PageProps) {
+  const { search, jobType, location } = await searchParams;
 
   return (
-    <main>
-      <Container className="space-y-4">
-        {jobs.map((job) => (
-          <JobCard key={job.id} job={job} />
-        ))}
-      </Container>
+    <main className="mx-auto grid max-w-5xl grid-cols-1 gap-4 px-4 md:grid-cols-[200px_1fr]">
+      <JobList filterValues={{ search, jobType, location }} />
     </main>
   );
 }
