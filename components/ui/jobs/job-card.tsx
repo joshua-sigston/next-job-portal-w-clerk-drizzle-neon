@@ -43,8 +43,8 @@ export default function JobCard({
           <CardAction></CardAction>
         </CardHeader>
         <CardContent className="mt-4 flex flex-col space-y-2">
-          <div className="flex space-x-4">
-            <small className="flex items-center gap-1">
+          <div className="flex flex-col space-y-4 space-x-4 sm:flex-row sm:space-y-0">
+            <small className="flex items-center gap-1 text-xs sm:text-sm">
               <Briefcase size={16} className="text-muted-foreground shrink-0" />
               {jobType}, {experienceLevel}
             </small>
@@ -53,7 +53,7 @@ export default function JobCard({
               {location}
             </small>
           </div>
-          <div className="flex space-x-4">
+          <div className="mt-2 flex flex-col space-y-4 space-x-4 sm:flex-row sm:space-y-0">
             <small className="flex items-center gap-1">{salary}</small>
             <div className="flex items-center gap-1">
               <small className="font-semibold">Posted:</small>

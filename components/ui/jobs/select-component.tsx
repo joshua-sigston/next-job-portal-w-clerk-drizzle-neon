@@ -11,23 +11,23 @@ interface SelectComponentProps {
   name: string;
   id: string;
   defaultValue?: string;
-  selectItem?: string;
+  placeholder: string;
 }
 
 export default function SelectComponent({
   options,
   name,
   id,
-  defaultValue = "all",
-  selectItem = "Select an option",
+  defaultValue = "",
+  placeholder,
 }: SelectComponentProps) {
   return (
-    <Select defaultValue={defaultValue} name={name}>
+    <Select defaultValue={defaultValue || ""} name={name}>
       <SelectTrigger className="w-full" id={id}>
-        <SelectValue placeholder="Select a location" />
+        <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="all">{selectItem}</SelectItem>
+        <SelectItem value="all">All {placeholder}s</SelectItem>
         {options.map((option, i) => (
           <SelectItem key={i} value={option}>
             {option}
